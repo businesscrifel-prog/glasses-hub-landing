@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
+import logo from "@/assets/logo.png";
 import p1 from "@/assets/product-1.jpg";
 import p2 from "@/assets/product-2.jpg";
 import p3 from "@/assets/product-3.jpg";
@@ -122,31 +123,31 @@ function Index() {
   return (
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
-      <div className="bg-brand-red text-white">
+      <div className="bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 lg:px-8">
           <p className="truncate">
-            GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
+            <span className="text-gold">GET FLAT 10% DISCOUNT</span> BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
           </p>
           <div className="hidden shrink-0 items-center gap-4 md:flex">
-            <span className="inline-flex items-center gap-1"><Phone className="h-3 w-3" /> +92 300 0000000</span>
-            <a href="#" className="hover:underline">Contact</a>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">Track Order</a>
+            <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:text-gold"><Phone className="h-3 w-3" /> +92 320 8664099</a>
+            <a href="#" className="hover:text-gold">Contact</a>
+            <a href="#" className="hover:text-gold">Help</a>
+            <a href="#" className="hover:text-gold">Track Order</a>
           </div>
         </div>
       </div>
 
       {/* Main navbar */}
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="/" className="font-display text-xl font-black tracking-tight text-ink sm:text-2xl">
-            the glasses hub
+        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="The Glasses Hub" width={1152} height={576} className="h-10 w-auto sm:h-12" />
           </a>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
               {navLinks.map((l) => (
                 <li key={l}>
-                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-brand-red">
+                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-gold-dark">
                     {l}
                   </a>
                 </li>
@@ -154,36 +155,36 @@ function Index() {
             </ul>
           </nav>
           <div className="flex items-center gap-4 text-ink">
-            <button aria-label="Search" className="transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
-            <button aria-label="Account" className="transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
-            <button aria-label="Wishlist" className="relative transition-colors hover:text-brand-red">
+            <button aria-label="Search" className="transition-colors hover:text-gold-dark"><Search className="h-5 w-5" /></button>
+            <button aria-label="Account" className="transition-colors hover:text-gold-dark"><User className="h-5 w-5" /></button>
+            <button aria-label="Wishlist" className="relative transition-colors hover:text-gold-dark">
               <Heart className="h-5 w-5" />
             </button>
-            <button aria-label="Cart" className="relative transition-colors hover:text-brand-red">
+            <button aria-label="Cart" className="relative transition-colors hover:text-gold-dark">
               <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-white">0</span>
+              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-gold-dark px-1 text-[9px] font-bold text-white">0</span>
             </button>
           </div>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden bg-ink">
         <img
           src={heroImg}
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover sm:h-[600px] lg:h-[680px]"
+          className="h-[520px] w-full object-cover object-[15%_center] sm:h-[600px] sm:object-[20%_center] lg:h-[680px] lg:object-[25%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/50 to-black/85" />
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-right">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-white/80">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-gold">
               New Collection · 2026
             </p>
             <h1 className="font-display text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-              Buy Glasses Online — Eyeglasses, Sunglasses & Blue Light Protection
+              Buy Glasses Online — <span className="text-gold">Eyeglasses</span>, Sunglasses & Blue Light Protection
             </h1>
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
@@ -191,7 +192,7 @@ function Index() {
             <div className="mt-8 flex justify-end">
               <a
                 href="#best-sellers"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-[0_10px_30px_-10px_var(--color-gold)] transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:text-white"
               >
                 Shop Now <ChevronRight className="h-4 w-4" />
               </a>
@@ -312,11 +313,14 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-200 bg-white">
+      <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <p className="font-display text-xl font-black text-ink">the glasses hub</p>
-            <p className="mt-3 text-sm text-neutral-500">Premium eyewear, honest pricing, delivered worldwide.</p>
+            <img src={logo} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-10 w-auto" />
+            <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
+            <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-gold hover:text-gold-dark">
+              <Phone className="h-3.5 w-3.5" /> +92 320 8664099
+            </a>
           </div>
           {[
             { h: "Shop", l: ["Eyeglasses", "Sunglasses", "Blue Light", "Clearance"] },
@@ -324,23 +328,24 @@ function Index() {
             { h: "Company", l: ["About", "Stores", "Careers", "Press"] },
           ].map((c) => (
             <div key={c.h}>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-ink">{c.h}</h4>
-              <ul className="space-y-2 text-sm text-neutral-500">
-                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-brand-red">{i}</a></li>)}
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-gold">{c.h}</h4>
+              <ul className="space-y-2 text-sm text-white/60">
+                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-gold">{i}</a></li>)}
               </ul>
             </div>
           ))}
         </div>
-        <div className="border-t border-neutral-100 py-5 text-center text-xs text-neutral-400">
+        <div className="border-t border-white/10 py-5 text-center text-xs text-white/40">
           © {new Date().getFullYear()} The Glasses Hub. All rights reserved.
         </div>
       </footer>
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/920000000000"
+        href="https://wa.me/923208664099"
         aria-label="Chat on WhatsApp"
         className="fixed bottom-6 left-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition-transform hover:scale-110"
+      
       >
         <svg viewBox="0 0 32 32" className="h-7 w-7 fill-current" aria-hidden="true">
           <path d="M19.11 17.2c-.28-.14-1.64-.81-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.63-1.54-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.06-.22-.54-.45-.47-.62-.48h-.53c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.99 2.66 1.13 2.84.14.18 1.95 2.97 4.72 4.16.66.29 1.18.46 1.58.59.66.21 1.27.18 1.75.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33zM16.03 5C9.94 5 5 9.94 5 16.03c0 1.97.52 3.9 1.5 5.6L5 27l5.55-1.45c1.63.89 3.48 1.36 5.48 1.36 6.09 0 11.02-4.94 11.02-11.02C27.05 9.94 22.12 5 16.03 5z"/>
