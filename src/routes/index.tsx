@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo-black.png.asset.json";
 import p1 from "@/assets/product-1.jpg";
 import p2 from "@/assets/product-2.jpg";
 import p3 from "@/assets/product-3.jpg";
@@ -141,7 +141,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
           <a href="/" className="flex items-center">
-            <img src={logo} alt="The Glasses Hub" width={1152} height={576} className="h-10 w-auto sm:h-12" />
+            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
           </a>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
@@ -316,7 +316,7 @@ function Index() {
       <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <img src={logo} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-10 w-auto" />
+            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
             <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
             <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-gold hover:text-gold-dark">
               <Phone className="h-3.5 w-3.5" /> +92 320 8664099
