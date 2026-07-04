@@ -169,13 +169,13 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ink">
+      <section className="relative isolate h-[520px] overflow-hidden bg-ink sm:h-[600px] lg:h-[680px]">
         <img
           src={heroImg}
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover object-left sm:h-[600px] lg:h-[680px]"
+          className="absolute right-0 top-0 h-full w-[130%] max-w-none object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/45 to-black/90" />
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
