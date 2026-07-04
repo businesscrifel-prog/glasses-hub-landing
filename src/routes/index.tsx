@@ -123,31 +123,31 @@ function Index() {
   return (
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
-      <div className="bg-brand-red text-white">
+      <div className="bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 lg:px-8">
           <p className="truncate">
-            GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
+            <span className="text-gold">GET FLAT 10% DISCOUNT</span> BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
           </p>
           <div className="hidden shrink-0 items-center gap-4 md:flex">
-            <span className="inline-flex items-center gap-1"><Phone className="h-3 w-3" /> +92 300 0000000</span>
-            <a href="#" className="hover:underline">Contact</a>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">Track Order</a>
+            <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:text-gold"><Phone className="h-3 w-3" /> +92 320 8664099</a>
+            <a href="#" className="hover:text-gold">Contact</a>
+            <a href="#" className="hover:text-gold">Help</a>
+            <a href="#" className="hover:text-gold">Track Order</a>
           </div>
         </div>
       </div>
 
       {/* Main navbar */}
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="/" className="font-display text-xl font-black tracking-tight text-ink sm:text-2xl">
-            the glasses hub
+        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="The Glasses Hub" width={1152} height={576} className="h-10 w-auto sm:h-12" />
           </a>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
               {navLinks.map((l) => (
                 <li key={l}>
-                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-brand-red">
+                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-gold-dark">
                     {l}
                   </a>
                 </li>
@@ -155,36 +155,36 @@ function Index() {
             </ul>
           </nav>
           <div className="flex items-center gap-4 text-ink">
-            <button aria-label="Search" className="transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
-            <button aria-label="Account" className="transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
-            <button aria-label="Wishlist" className="relative transition-colors hover:text-brand-red">
+            <button aria-label="Search" className="transition-colors hover:text-gold-dark"><Search className="h-5 w-5" /></button>
+            <button aria-label="Account" className="transition-colors hover:text-gold-dark"><User className="h-5 w-5" /></button>
+            <button aria-label="Wishlist" className="relative transition-colors hover:text-gold-dark">
               <Heart className="h-5 w-5" />
             </button>
-            <button aria-label="Cart" className="relative transition-colors hover:text-brand-red">
+            <button aria-label="Cart" className="relative transition-colors hover:text-gold-dark">
               <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-white">0</span>
+              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-gold-dark px-1 text-[9px] font-bold text-white">0</span>
             </button>
           </div>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden bg-ink">
         <img
           src={heroImg}
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover sm:h-[600px] lg:h-[680px]"
+          className="h-[520px] w-full object-cover object-[15%_center] sm:h-[600px] sm:object-[20%_center] lg:h-[680px] lg:object-[25%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/50 to-black/85" />
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-right">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-white/80">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-gold">
               New Collection · 2026
             </p>
             <h1 className="font-display text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-              Buy Glasses Online — Eyeglasses, Sunglasses & Blue Light Protection
+              Buy Glasses Online — <span className="text-gold">Eyeglasses</span>, Sunglasses & Blue Light Protection
             </h1>
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
@@ -192,7 +192,7 @@ function Index() {
             <div className="mt-8 flex justify-end">
               <a
                 href="#best-sellers"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-[0_10px_30px_-10px_var(--color-gold)] transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:text-white"
               >
                 Shop Now <ChevronRight className="h-4 w-4" />
               </a>
