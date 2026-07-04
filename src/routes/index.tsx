@@ -313,11 +313,14 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-200 bg-white">
+      <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <p className="font-display text-xl font-black text-ink">the glasses hub</p>
-            <p className="mt-3 text-sm text-neutral-500">Premium eyewear, honest pricing, delivered worldwide.</p>
+            <img src={logo} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-10 w-auto" />
+            <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
+            <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-gold hover:text-gold-dark">
+              <Phone className="h-3.5 w-3.5" /> +92 320 8664099
+            </a>
           </div>
           {[
             { h: "Shop", l: ["Eyeglasses", "Sunglasses", "Blue Light", "Clearance"] },
@@ -325,23 +328,24 @@ function Index() {
             { h: "Company", l: ["About", "Stores", "Careers", "Press"] },
           ].map((c) => (
             <div key={c.h}>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-ink">{c.h}</h4>
-              <ul className="space-y-2 text-sm text-neutral-500">
-                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-brand-red">{i}</a></li>)}
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-gold">{c.h}</h4>
+              <ul className="space-y-2 text-sm text-white/60">
+                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-gold">{i}</a></li>)}
               </ul>
             </div>
           ))}
         </div>
-        <div className="border-t border-neutral-100 py-5 text-center text-xs text-neutral-400">
+        <div className="border-t border-white/10 py-5 text-center text-xs text-white/40">
           © {new Date().getFullYear()} The Glasses Hub. All rights reserved.
         </div>
       </footer>
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/920000000000"
+        href="https://wa.me/923208664099"
         aria-label="Chat on WhatsApp"
         className="fixed bottom-6 left-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition-transform hover:scale-110"
+      
       >
         <svg viewBox="0 0 32 32" className="h-7 w-7 fill-current" aria-hidden="true">
           <path d="M19.11 17.2c-.28-.14-1.64-.81-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.63-1.54-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.06-.22-.54-.45-.47-.62-.48h-.53c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.99 2.66 1.13 2.84.14.18 1.95 2.97 4.72 4.16.66.29 1.18.46 1.58.59.66.21 1.27.18 1.75.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33zM16.03 5C9.94 5 5 9.94 5 16.03c0 1.97.52 3.9 1.5 5.6L5 27l5.55-1.45c1.63.89 3.48 1.36 5.48 1.36 6.09 0 11.02-4.94 11.02-11.02C27.05 9.94 22.12 5 16.03 5z"/>
