@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo-black.png.asset.json";
 import p1 from "@/assets/product-1.jpg";
 import p2 from "@/assets/product-2.jpg";
 import p3 from "@/assets/product-3.jpg";
