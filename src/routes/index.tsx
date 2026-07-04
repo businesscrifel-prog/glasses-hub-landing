@@ -175,9 +175,9 @@ function Index() {
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover object-[15%_center] sm:h-[600px] sm:object-[20%_center] lg:h-[680px] lg:object-[25%_center]"
+          className="h-[520px] w-full object-cover object-left sm:h-[600px] lg:h-[680px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/50 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/45 to-black/90" />
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-right">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-gold">
