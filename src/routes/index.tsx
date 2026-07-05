@@ -115,7 +115,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center">
-            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
+            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
           </Link>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
