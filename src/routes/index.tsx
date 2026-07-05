@@ -1,17 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
 import logoAsset from "@/assets/logo-black.png.asset.json";
-import p1 from "@/assets/product-1.jpg";
-import p2 from "@/assets/product-2.jpg";
-import p3 from "@/assets/product-3.jpg";
-import p4 from "@/assets/product-4.jpg";
 import cClipon from "@/assets/collection-clipon.jpg";
 import cScreen from "@/assets/collection-screen.jpg";
 import cMetal from "@/assets/collection-metal.jpg";
 import cSun from "@/assets/collection-sunglasses.jpg";
 import ed1 from "@/assets/editorial-1.jpg";
 import ed2 from "@/assets/editorial-2.jpg";
+import { products, fmt, type Product } from "@/lib/products";
+import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -27,34 +25,9 @@ const navLinks = [
   "Premium",
 ];
 
-type Product = {
-  img: string;
-  tag?: "PREMIUM" | "NEW ARRIVAL" | "SALE";
-  title: string;
-  price: number;
-  original: number;
-};
-
-const bestSellers: Product[] = [
-  { img: p1, tag: "PREMIUM", title: "Rayline · Aster · Matte Black · Acetate · Square · Eyeglasses", price: 4990, original: 7990 },
-  { img: p2, tag: "PREMIUM", title: "Aeron · Pilot · Gold-Smoke · Metal · Aviator · Sunglasses", price: 5490, original: 8990 },
-  { img: p3, tag: "NEW ARRIVAL", title: "Nova · Circa · Tortoise · Acetate · Round · Eyeglasses", price: 3990, original: 6490 },
-  { img: p4, tag: "NEW ARRIVAL", title: "Orbit · Skyline · Silver-Mirror · Metal · Wayfarer · Sunglasses", price: 5990, original: 9490 },
-];
-
-const clearance: Product[] = [
-  { img: p3, tag: "SALE", title: "Nova · Circa · Tortoise · Acetate · Round · Eyeglasses", price: 2490, original: 6490 },
-  { img: p1, tag: "SALE", title: "Rayline · Aster · Matte Black · Acetate · Square · Eyeglasses", price: 2990, original: 7990 },
-  { img: p4, tag: "SALE", title: "Orbit · Skyline · Silver-Mirror · Metal · Wayfarer · Sunglasses", price: 3490, original: 9490 },
-  { img: p2, tag: "SALE", title: "Aeron · Pilot · Gold-Smoke · Metal · Aviator · Sunglasses", price: 3990, original: 8990 },
-];
-
-const newArrivals: Product[] = [
-  { img: p2, tag: "NEW ARRIVAL", title: "Aeron · Pilot · Gold-Smoke · Metal · Aviator · Sunglasses", price: 5490, original: 8990 },
-  { img: p4, tag: "NEW ARRIVAL", title: "Orbit · Skyline · Silver-Mirror · Metal · Wayfarer · Sunglasses", price: 5990, original: 9490 },
-  { img: p1, tag: "NEW ARRIVAL", title: "Rayline · Aster · Matte Black · Acetate · Square · Eyeglasses", price: 4990, original: 7990 },
-  { img: p3, tag: "NEW ARRIVAL", title: "Nova · Circa · Tortoise · Acetate · Round · Eyeglasses", price: 3990, original: 6490 },
-];
+const bestSellers = products;
+const clearance: Product[] = products.map((p) => ({ ...p, tag: "SALE", price: Math.round(p.price * 0.55) }));
+const newArrivals: Product[] = products.map((p) => ({ ...p, tag: "NEW ARRIVAL" }));
 
 const collections = [
   { img: cClipon, label: "Attachment Clip On Glasses" },
@@ -63,14 +36,14 @@ const collections = [
   { img: cSun, label: "Sunglasses" },
 ];
 
-function fmt(n: number) {
-  return "Rs. " + n.toLocaleString("en-PK");
-}
-
 function ProductCard({ p }: { p: Product }) {
   const saving = p.original - p.price;
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white transition-shadow hover:shadow-lg">
+    <Link
+      to="/product/$id"
+      params={{ id: p.id }}
+      className="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white transition-shadow hover:shadow-lg"
+    >
       <div className="relative aspect-square bg-white p-6">
         {p.tag && (
           <span className="absolute left-3 top-3 rounded-sm bg-brand-red px-2 py-1 text-[10px] font-bold tracking-wider text-white">
@@ -94,7 +67,7 @@ function ProductCard({ p }: { p: Product }) {
         </div>
         <p className="text-xs font-semibold text-brand-red">Saving: {fmt(saving)}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -113,26 +86,27 @@ function ProductGrid({ title, kicker, products }: { title: string; kicker?: stri
         </a>
       </div>
       <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-        {products.map((p, i) => <ProductCard key={i} p={p} />)}
+        {products.map((p, i) => <ProductCard key={p.id + i} p={p} />)}
       </div>
     </section>
   );
 }
 
 function Index() {
+  const { count } = useCart();
   return (
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
-      <div className="bg-ink text-white">
+      <div className="bg-brand-red text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 lg:px-8">
           <p className="truncate">
-            <span className="text-gold">GET FLAT 10% DISCOUNT</span> BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
+            GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
           </p>
           <div className="hidden shrink-0 items-center gap-4 md:flex">
-            <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:text-gold"><Phone className="h-3 w-3" /> +92 320 8664099</a>
-            <a href="#" className="hover:text-gold">Contact</a>
-            <a href="#" className="hover:text-gold">Help</a>
-            <a href="#" className="hover:text-gold">Track Order</a>
+            <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:underline"><Phone className="h-3 w-3" /> +92 320 8664099</a>
+            <a href="#" className="hover:underline">Contact</a>
+            <a href="#" className="hover:underline">Help</a>
+            <a href="#" className="hover:underline">Track Order</a>
           </div>
         </div>
       </div>
@@ -140,14 +114,14 @@ function Index() {
       {/* Main navbar */}
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
-          </a>
+          </Link>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
               {navLinks.map((l) => (
                 <li key={l}>
-                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-gold-dark">
+                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-brand-red">
                     {l}
                   </a>
                 </li>
@@ -155,15 +129,15 @@ function Index() {
             </ul>
           </nav>
           <div className="flex items-center gap-4 text-ink">
-            <button aria-label="Search" className="transition-colors hover:text-gold-dark"><Search className="h-5 w-5" /></button>
-            <button aria-label="Account" className="transition-colors hover:text-gold-dark"><User className="h-5 w-5" /></button>
-            <button aria-label="Wishlist" className="relative transition-colors hover:text-gold-dark">
+            <button aria-label="Search" className="transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
+            <button aria-label="Account" className="transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
+            <button aria-label="Wishlist" className="relative transition-colors hover:text-brand-red">
               <Heart className="h-5 w-5" />
             </button>
-            <button aria-label="Cart" className="relative transition-colors hover:text-gold-dark">
+            <Link to="/cart" aria-label="Cart" className="relative transition-colors hover:text-brand-red">
               <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-gold-dark px-1 text-[9px] font-bold text-white">0</span>
-            </button>
+              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-white">{count}</span>
+            </Link>
           </div>
         </div>
       </header>
@@ -180,11 +154,11 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/40 to-black/70" />
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-right">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-gold">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-brand-red">
               New Collection · 2026
             </p>
             <h1 className="font-display text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-              Buy Glasses Online — <span className="text-gold">Eyeglasses</span>, Sunglasses & Blue Light Protection
+              Buy Glasses Online — Eyeglasses, Sunglasses & Blue Light Protection
             </h1>
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
@@ -192,7 +166,7 @@ function Index() {
             <div className="mt-8 flex justify-end">
               <a
                 href="#best-sellers"
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-[0_10px_30px_-10px_var(--color-gold)] transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-red px-8 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark"
               >
                 Shop Now <ChevronRight className="h-4 w-4" />
               </a>
@@ -201,12 +175,10 @@ function Index() {
         </div>
       </section>
 
-      {/* Best sellers */}
       <div id="best-sellers">
         <ProductGrid title="Best Selling Glasses" products={bestSellers} />
       </div>
 
-      {/* Clearance */}
       <section className="bg-neutral-50 py-4">
         <ProductGrid
           title="Clearance Sale — Limited Stock, Best Prices"
@@ -215,10 +187,8 @@ function Index() {
         />
       </section>
 
-      {/* New arrivals */}
       <ProductGrid title="New Arrivals" products={newArrivals} />
 
-      {/* Shop by collection */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm font-semibold text-brand-red">Curated Categories</p>
@@ -252,7 +222,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Editorial A */}
       <section className="bg-neutral-50">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
@@ -263,8 +232,7 @@ function Index() {
             <p className="mt-5 text-base leading-relaxed text-neutral-600">
               We obsess over quality, keep prices honest, and stock a range wide enough for men, women and
               kids. Every frame is inspected before it leaves our studio, and worldwide delivery means your
-              next pair is only a few days away — not weeks. Prescription lenses, blue-light filters and
-              transitions are all built-in options at checkout.
+              next pair is only a few days away — not weeks.
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-3 text-sm">
               {["Free worldwide shipping", "30-day easy returns", "Lifetime frame warranty", "Prescription ready"].map((f) => (
@@ -273,9 +241,6 @@ function Index() {
                 </li>
               ))}
             </ul>
-            <a href="#" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-red">
-              Explore Frames <ChevronRight className="h-4 w-4" />
-            </a>
           </div>
           <div className="overflow-hidden rounded-lg">
             <img src={ed1} alt="Model wearing clear metal-frame glasses" width={1000} height={1100} loading="lazy" className="aspect-[4/5] w-full object-cover" />
@@ -283,7 +248,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Editorial B */}
       <section>
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div className="order-2 overflow-hidden rounded-lg lg:order-1">
@@ -296,18 +260,8 @@ function Index() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-600">
               A great frame does more than sit on your nose. It looks polished in meetings, holds lenses
-              securely through long days, and flatters the shape of your face — round, oval, square or
-              heart. Our fit guide pairs your face shape with the silhouettes that suit it best, so you
-              order once and love them every day.
+              securely through long days, and flatters the shape of your face.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-brand-red px-7 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-red-dark">
-                Find Your Fit
-              </a>
-              <a href="#" className="inline-flex items-center gap-2 rounded-full border border-ink px-7 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:bg-ink hover:text-white">
-                Face Shape Guide
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -318,7 +272,7 @@ function Index() {
           <div className="col-span-2 md:col-span-1">
             <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
             <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
-            <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-gold hover:text-gold-dark">
+            <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-white hover:text-brand-red">
               <Phone className="h-3.5 w-3.5" /> +92 320 8664099
             </a>
           </div>
@@ -328,9 +282,9 @@ function Index() {
             { h: "Company", l: ["About", "Stores", "Careers", "Press"] },
           ].map((c) => (
             <div key={c.h}>
-              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-gold">{c.h}</h4>
+              <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-white">{c.h}</h4>
               <ul className="space-y-2 text-sm text-white/60">
-                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-gold">{i}</a></li>)}
+                {c.l.map((i) => <li key={i}><a href="#" className="hover:text-brand-red">{i}</a></li>)}
               </ul>
             </div>
           ))}
@@ -340,12 +294,10 @@ function Index() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp */}
       <a
         href="https://wa.me/923208664099"
         aria-label="Chat on WhatsApp"
         className="fixed bottom-6 left-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition-transform hover:scale-110"
-      
       >
         <svg viewBox="0 0 32 32" className="h-7 w-7 fill-current" aria-hidden="true">
           <path d="M19.11 17.2c-.28-.14-1.64-.81-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.63-1.54-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.06-.22-.54-.45-.47-.62-.48h-.53c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.99 2.66 1.13 2.84.14.18 1.95 2.97 4.72 4.16.66.29 1.18.46 1.58.59.66.21 1.27.18 1.75.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33zM16.03 5C9.94 5 5 9.94 5 16.03c0 1.97.52 3.9 1.5 5.6L5 27l5.55-1.45c1.63.89 3.48 1.36 5.48 1.36 6.09 0 11.02-4.94 11.02-11.02C27.05 9.94 22.12 5 16.03 5z"/>
