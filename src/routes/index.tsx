@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
-import logoAsset from "@/assets/logo-black.png.asset.json";
+import logoUrl from "@/assets/logo-black.png";
 import cClipon from "@/assets/collection-clipon.jpg";
 import cScreen from "@/assets/collection-screen.jpg";
 import cMetal from "@/assets/collection-metal.jpg";
