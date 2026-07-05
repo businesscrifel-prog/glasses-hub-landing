@@ -98,15 +98,16 @@ function Index() {
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
       <div className="bg-brand-red text-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 lg:px-8">
-          <p className="truncate">
-            GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 md:flex-row lg:px-8">
+          <p className="text-center md:text-left">
+            <span className="hidden sm:inline">GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE</span>
+            <span className="sm:hidden">10% OFF ON CARD PAYMENTS · WORLDWIDE DELIVERY</span>
           </p>
-          <div className="hidden shrink-0 items-center gap-4 md:flex">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:underline"><Phone className="h-3 w-3" /> +92 320 8664099</a>
-            <a href="#" className="hover:underline">Contact</a>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">Track Order</a>
+            <a href="#" className="hidden hover:underline md:inline">Contact</a>
+            <a href="#" className="hidden hover:underline md:inline">Help</a>
+            <a href="#" className="hidden hover:underline md:inline">Track Order</a>
           </div>
         </div>
       </div>
