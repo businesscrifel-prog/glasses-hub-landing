@@ -270,7 +270,7 @@ function Index() {
       <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
+            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
             <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
             <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-white hover:text-brand-red">
               <Phone className="h-3.5 w-3.5" /> +92 320 8664099
