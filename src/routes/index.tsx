@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
-import logoAsset from "@/assets/logo-black.png.asset.json";
+import logoUrl from "@/assets/logo-black.png";
 import cClipon from "@/assets/collection-clipon.jpg";
 import cScreen from "@/assets/collection-screen.jpg";
 import cMetal from "@/assets/collection-metal.jpg";
@@ -98,15 +98,16 @@ function Index() {
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
       <div className="bg-brand-red text-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 lg:px-8">
-          <p className="truncate">
-            GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 md:flex-row lg:px-8">
+          <p className="text-center md:text-left">
+            <span className="hidden sm:inline">GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE</span>
+            <span className="sm:hidden">10% OFF ON CARD PAYMENTS · WORLDWIDE DELIVERY</span>
           </p>
-          <div className="hidden shrink-0 items-center gap-4 md:flex">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <a href="tel:+923208664099" className="inline-flex items-center gap-1 hover:underline"><Phone className="h-3 w-3" /> +92 320 8664099</a>
-            <a href="#" className="hover:underline">Contact</a>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">Track Order</a>
+            <a href="#" className="hidden hover:underline md:inline">Contact</a>
+            <a href="#" className="hidden hover:underline md:inline">Help</a>
+            <a href="#" className="hidden hover:underline md:inline">Track Order</a>
           </div>
         </div>
       </div>
@@ -115,7 +116,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center">
-            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
+            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
           </Link>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
@@ -270,7 +271,7 @@ function Index() {
       <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <img src={logoAsset.url} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
+            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
             <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
             <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-white hover:text-brand-red">
               <Phone className="h-3.5 w-3.5" /> +92 320 8664099
