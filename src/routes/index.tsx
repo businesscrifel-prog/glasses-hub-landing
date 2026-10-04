@@ -158,11 +158,11 @@ function Index() {
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover object-[20%_center] sm:h-[600px] lg:h-[680px]"
+          className="h-[350px] w-full object-cover object-left sm:h-[600px] lg:h-[680px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/40 to-black/70" />
-        <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl text-right">
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink/0 via-ink/40 to-ink/70 sm:block" />
+        <div className="relative mx-auto flex max-w-7xl items-center justify-center bg-ink px-4 py-10 sm:absolute sm:inset-0 sm:justify-end sm:bg-transparent sm:px-6 lg:px-8">
+          <div className="max-w-xl text-center sm:text-right">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-brand-red">
               New Collection · 2026
             </p>
@@ -172,7 +172,7 @@ function Index() {
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
             </p>
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 flex justify-center sm:justify-end">
               <a
                 href="#best-sellers"
                 className="inline-flex items-center gap-2 rounded-full bg-brand-red px-8 py-3 text-sm font-bold uppercase tracking-wider text-brand-on-gold shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark"
