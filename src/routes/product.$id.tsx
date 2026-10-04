@@ -6,6 +6,11 @@ import { useCart } from "@/lib/cart";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$id")({
+  head: ({ params }) => {
+    const title = `${getProduct(params.id)?.title ?? "Eyewear"} | SHD Optical`;
+    const description = getProduct(params.id)?.description ?? "Shop eyeglasses and sunglasses at SHD Optical.";
+    return { meta: [{ title }, { name: "description", content: description }, { property: "og:title", content: title }, { property: "og:description", content: description }, { property: "og:type", content: "product" }, { name: "twitter:card", content: "summary_large_image" }] };
+  },
   component: ProductPage,
   notFoundComponent: () => (
     <div className="p-10 text-center">Product not found. <Link to="/" className="text-brand-red underline">Go home</Link></div>
@@ -42,7 +47,7 @@ function ProductPage() {
         </div>
         <div>
           {product.tag && (
-            <span className="inline-block rounded-sm bg-brand-red px-2 py-1 text-[10px] font-bold tracking-wider text-white">
+            <span className="inline-block rounded-sm bg-brand-red px-2 py-1 text-[10px] font-bold tracking-wider text-brand-on-gold">
               {product.tag}
             </span>
           )}
@@ -76,7 +81,7 @@ function ProductPage() {
           </div>
           <button
             onClick={() => { add(product.id, qty); navigate({ to: "/checkout" }); }}
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-red-dark"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-brand-on-gold hover:bg-brand-red-dark"
           >
             Buy Now
           </button>

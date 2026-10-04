@@ -6,6 +6,7 @@ import { fmt } from "@/lib/products";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/checkout")({
+  head: () => ({ meta: [{ title: "Checkout | SHD Optical" }, { name: "description", content: "Complete your SHD Optical order with delivery details and your preferred payment option." }, { property: "og:title", content: "Checkout | SHD Optical" }, { property: "og:description", content: "Complete your SHD Optical order with delivery details and your preferred payment option." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: CheckoutPage,
 });
 
@@ -47,7 +48,7 @@ function CheckoutPage() {
       toast.error("Please enter the JazzCash transaction ID"); return;
     }
     setSubmitting(true);
-    const orderId = "TGH-" + Date.now().toString().slice(-8);
+    const orderId = "SHD-" + Date.now().toString().slice(-8);
     try {
       const order = { orderId, items: detailed, total, form, payment, createdAt: new Date().toISOString() };
       const prev = JSON.parse(localStorage.getItem("tgh_orders") || "[]");
@@ -149,7 +150,7 @@ function CheckoutPage() {
             <button
               type="submit"
               disabled={submitting || detailed.length === 0}
-              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-red-dark disabled:opacity-60"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-brand-on-gold hover:bg-brand-red-dark disabled:opacity-60"
             >
               {payment === "cod" ? "Place Order (COD)" : "Confirm Order"}
             </button>

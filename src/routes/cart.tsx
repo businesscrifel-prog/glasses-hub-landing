@@ -4,6 +4,7 @@ import { useCart } from "@/lib/cart";
 import { fmt } from "@/lib/products";
 
 export const Route = createFileRoute("/cart")({
+  head: () => ({ meta: [{ title: "Your Cart | SHD Optical" }, { name: "description", content: "Review the eyewear in your SHD Optical cart." }, { property: "og:title", content: "Your Cart | SHD Optical" }, { property: "og:description", content: "Review the eyewear in your SHD Optical cart." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: CartPage,
 });
 
@@ -21,7 +22,7 @@ function CartPage() {
         {detailed.length === 0 ? (
           <div className="mt-10 rounded-lg border border-dashed border-neutral-300 p-10 text-center">
             <p className="text-neutral-600">Your cart is empty.</p>
-            <Link to="/" className="mt-4 inline-block rounded-full bg-brand-red px-6 py-2 text-sm font-bold uppercase tracking-wider text-white">Shop now</Link>
+            <Link to="/" className="mt-4 inline-block rounded-full bg-brand-red px-6 py-2 text-sm font-bold uppercase tracking-wider text-brand-on-gold">Shop now</Link>
           </div>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_360px]">
@@ -61,7 +62,7 @@ function CartPage() {
               </div>
               <Link
                 to="/checkout"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-red-dark"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-red px-6 py-3 text-sm font-bold uppercase tracking-wider text-brand-on-gold hover:bg-brand-red-dark"
               >
                 Checkout
               </Link>
