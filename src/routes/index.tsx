@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, User, Heart, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-model.jpg";
-import logoUrl from "@/assets/logo-black.png";
+import logoUrl from "@/assets/shd-optical-logo.png";
 import cClipon from "@/assets/collection-clipon.jpg";
 import cScreen from "@/assets/collection-screen.jpg";
 import cMetal from "@/assets/collection-metal.jpg";
@@ -12,6 +12,14 @@ import { products, fmt, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "SHD Optical | Eyeglasses & Sunglasses" },
+    { name: "description", content: "Discover eyeglasses and sunglasses at SHD Optical. Shop everyday frames, new arrivals and eyewear deals online." },
+    { property: "og:title", content: "SHD Optical | Eyeglasses & Sunglasses" },
+    { property: "og:description", content: "Discover eyeglasses and sunglasses at SHD Optical. Shop everyday frames, new arrivals and eyewear deals online." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Index,
 });
 
@@ -46,7 +54,7 @@ function ProductCard({ p }: { p: Product }) {
     >
       <div className="relative aspect-square bg-white p-6">
         {p.tag && (
-          <span className="absolute left-3 top-3 rounded-sm bg-brand-red px-2 py-1 text-[10px] font-bold tracking-wider text-white">
+          <span className="absolute left-3 top-3 rounded-sm bg-brand-red px-2 py-1 text-[10px] font-bold tracking-wider text-brand-on-gold">
             {p.tag}
           </span>
         )}
@@ -97,7 +105,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-white font-sans text-ink antialiased">
       {/* Announcement bar */}
-      <div className="bg-brand-red text-white">
+      <div className="bg-ink text-gold">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-2 text-[11px] font-medium tracking-wide sm:px-6 md:flex-row lg:px-8">
           <p className="text-center md:text-left">
             <span className="hidden sm:inline">GET FLAT 10% DISCOUNT BY PAYING VIA CARD · NOW DELIVERING WORLDWIDE</span>
@@ -113,23 +121,23 @@ function Index() {
       </div>
 
       {/* Main navbar */}
-      <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
+      <header className="sticky top-0 z-40 border-b border-gold/30 bg-ink">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center">
-            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} className="h-14 w-auto sm:h-16" />
+            <img src={logoUrl} alt="SHD Optical" width={917} height={572} className="h-16 w-auto sm:h-20" />
           </Link>
           <nav className="hidden justify-center xl:flex">
             <ul className="flex items-center gap-6">
               {navLinks.map((l) => (
                 <li key={l}>
-                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-ink transition-colors hover:text-brand-red">
+                  <a href="#" className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-brand-light transition-colors hover:text-brand-red">
                     {l}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-4 text-ink">
+          <div className="flex items-center gap-4 text-brand-light">
             <button aria-label="Search" className="transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
             <button aria-label="Account" className="transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
             <button aria-label="Wishlist" className="relative transition-colors hover:text-brand-red">
@@ -137,7 +145,7 @@ function Index() {
             </button>
             <Link to="/cart" aria-label="Cart" className="relative transition-colors hover:text-brand-red">
               <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-white">{count}</span>
+              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-brand-on-gold">{count}</span>
             </Link>
           </div>
         </div>
@@ -150,11 +158,11 @@ function Index() {
           alt="Model wearing stylish black sunglasses"
           width={1600}
           height={900}
-          className="h-[520px] w-full object-cover object-[20%_center] sm:h-[600px] lg:h-[680px]"
+          className="h-[350px] w-full object-cover object-left sm:h-[600px] lg:h-[680px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/40 to-black/70" />
-        <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-end px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl text-right">
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink/0 via-ink/40 to-ink/70 sm:block" />
+        <div className="relative mx-auto flex max-w-7xl items-center justify-center bg-ink px-4 py-10 sm:absolute sm:inset-0 sm:justify-end sm:bg-transparent sm:px-6 lg:px-8">
+          <div className="max-w-xl text-center sm:text-right">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-brand-red">
               New Collection · 2026
             </p>
@@ -164,10 +172,10 @@ function Index() {
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
             </p>
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 flex justify-center sm:justify-end">
               <a
                 href="#best-sellers"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-red px-8 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-red px-8 py-3 text-sm font-bold uppercase tracking-wider text-brand-on-gold shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark"
               >
                 Shop Now <ChevronRight className="h-4 w-4" />
               </a>
@@ -212,7 +220,7 @@ function Index() {
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-6">
                   <div className="flex items-end justify-between">
                     <h3 className="font-display text-xl font-bold text-white sm:text-2xl">{c.label}</h3>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink transition-colors group-hover:bg-brand-red group-hover:text-white">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-brand-light px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink transition-colors group-hover:bg-brand-red group-hover:text-brand-on-gold">
                       Shop <ChevronRight className="h-3 w-3" />
                     </span>
                   </div>
@@ -228,7 +236,7 @@ function Index() {
           <div>
             <p className="mb-2 text-sm font-semibold text-brand-red">Our Promise</p>
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-              Why Choose The Glasses Hub
+              Why Choose SHD Optical
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-600">
               We obsess over quality, keep prices honest, and stock a range wide enough for men, women and
@@ -271,7 +279,7 @@ function Index() {
       <footer className="border-t border-neutral-200 bg-ink text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="col-span-2 md:col-span-1">
-            <img src={logoUrl} alt="The Glasses Hub" width={1152} height={576} loading="lazy" className="h-14 w-auto invert" />
+            <img src={logoUrl} alt="SHD Optical" width={917} height={572} loading="lazy" className="h-20 w-auto" />
             <p className="mt-3 text-sm text-white/60">Premium eyewear, honest pricing, delivered worldwide.</p>
             <a href="tel:+923208664099" className="mt-3 inline-flex items-center gap-1 text-sm text-white hover:text-brand-red">
               <Phone className="h-3.5 w-3.5" /> +92 320 8664099
@@ -291,7 +299,7 @@ function Index() {
           ))}
         </div>
         <div className="border-t border-white/10 py-5 text-center text-xs text-white/40">
-          © {new Date().getFullYear()} The Glasses Hub. All rights reserved.
+          © {new Date().getFullYear()} SHD Optical. All rights reserved.
         </div>
       </footer>
 
