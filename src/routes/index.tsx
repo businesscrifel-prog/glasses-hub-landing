@@ -167,7 +167,7 @@ function Index() {
               New Collection · 2026
             </p>
             <h1 className="font-display text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-              Buy Glasses Online — Eyeglasses, Sunglasses & Blue Light Protection
+              Buy Glasses Online Eyeglasses, Sunglasses & Blue Light Protection
             </h1>
             <p className="mt-4 text-sm text-white/85 sm:text-base">
               Premium frames engineered for everyday clarity. Free lenses on select styles.
