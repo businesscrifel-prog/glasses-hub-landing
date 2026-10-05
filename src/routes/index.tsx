@@ -4,7 +4,7 @@ import heroImg from "@/assets/hero-model.jpg";
 import logoUrl from "@/assets/shd-optical-logo.png";
 import cClipon from "@/assets/collection-clipon.jpg";
 import cScreen from "@/assets/collection-screen.jpg";
-import cMetal from "@/assets/collection-metal.jpg";
+import cMetal from "@/assets/collection-metal-full.jpg";
 import cSun from "@/assets/collection-sunglasses.jpg";
 import ed1 from "@/assets/editorial-1.jpg";
 import ed2 from "@/assets/editorial-2.jpg";
@@ -122,11 +122,11 @@ function Index() {
 
       {/* Main navbar */}
       <header className="sticky top-0 z-40 border-b border-gold/30 bg-ink">
-        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center">
-            <img src={logoUrl} alt="SHD Optical" width={917} height={572} className="h-16 w-auto sm:h-20" />
+        <div className="mx-auto flex max-w-7xl items-center px-4 py-3 sm:px-6 lg:px-8">
+          <Link to="/" className="flex min-w-0 shrink items-center">
+            <img src={logoUrl} alt="SHD Optical" width={917} height={572} className="h-14 max-w-36 object-contain object-left sm:h-20 sm:max-w-none" />
           </Link>
-          <nav className="hidden justify-center xl:flex">
+          <nav className="ml-auto hidden justify-center px-6 xl:flex">
             <ul className="flex items-center gap-6">
               {navLinks.map((l) => (
                 <li key={l}>
@@ -137,13 +137,13 @@ function Index() {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-4 text-brand-light">
-            <button aria-label="Search" className="transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
-            <button aria-label="Account" className="transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
-            <button aria-label="Wishlist" className="relative transition-colors hover:text-brand-red">
+          <div className="ml-auto flex shrink-0 items-center justify-end gap-3 text-brand-light sm:gap-4">
+            <button aria-label="Search" className="grid h-9 w-9 place-items-center transition-colors hover:text-brand-red"><Search className="h-5 w-5" /></button>
+            <button aria-label="Account" className="grid h-9 w-9 place-items-center transition-colors hover:text-brand-red"><User className="h-5 w-5" /></button>
+            <button aria-label="Wishlist" className="relative grid h-9 w-9 place-items-center transition-colors hover:text-brand-red">
               <Heart className="h-5 w-5" />
             </button>
-            <Link to="/cart" aria-label="Cart" className="relative transition-colors hover:text-brand-red">
+            <Link to="/cart" aria-label={`Cart with ${count} items`} className="relative grid h-9 w-9 place-items-center transition-colors hover:text-brand-red">
               <ShoppingBag className="h-5 w-5" />
               <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-brand-red px-1 text-[9px] font-bold text-brand-on-gold">{count}</span>
             </Link>

@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Product media that must work on third-party hosts is bundled through Vite imports, because host-relative asset-service URLs are not portable.
