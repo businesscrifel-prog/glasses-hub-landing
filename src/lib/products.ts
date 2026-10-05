@@ -1,6 +1,6 @@
-import p0 from "@/assets/summer-glasses.png.asset.json";
+import p0 from "@/assets/summer-glasses.png";
 import p1 from "@/assets/product-1.jpg";
-import p2 from "@/assets/product-2.jpg";
+import p2 from "@/assets/product-2-straight.jpg";
 import p3 from "@/assets/product-3.jpg";
 import p4 from "@/assets/product-4.jpg";
 
@@ -15,7 +15,7 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  { id: "summer-glasses", img: p0.url, tag: "NEW ARRIVAL", title: "Summer Glasses", price: 1500, original: 2500, description: "Lightweight transparent frame with a clean, modern square shape. Perfect for everyday wear and easy summer styling." },
+  { id: "summer-glasses", img: p0, tag: "NEW ARRIVAL", title: "Summer Glasses", price: 1500, original: 2500, description: "Lightweight transparent frame with a clean, modern square shape. Perfect for everyday wear and easy summer styling." },
   { id: "aster-matte-black", img: p1, tag: "PREMIUM", title: "Rayline · Aster · Matte Black · Acetate · Square · Eyeglasses", price: 4990, original: 7990, description: "Handcrafted matte black acetate frame with a modern square silhouette. Lightweight, prescription-ready, and built for long-day comfort." },
   { id: "aeron-gold-smoke", img: p2, tag: "PREMIUM", title: "Aeron · Pilot · Gold-Smoke · Metal · Aviator · Sunglasses", price: 5490, original: 8990, description: "Classic aviator sunglasses in gold metal with smoke gradient lenses. UV400 protection with a polished, timeless silhouette." },
   { id: "nova-tortoise", img: p3, tag: "NEW ARRIVAL", title: "Nova · Circa · Tortoise · Acetate · Round · Eyeglasses", price: 3990, original: 6490, description: "Warm tortoise acetate in a soft round shape. Flatters angular face shapes and pairs with clear or blue-light lenses." },

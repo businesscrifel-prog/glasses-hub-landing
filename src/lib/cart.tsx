@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { products, type Product } from "./products";
 
 export type CartItem = { id: string; qty: number };
@@ -19,15 +19,24 @@ const KEY = "tgh_cart_v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const restored = useRef(false);
 
   useEffect(() => {
     try {
       const raw = typeof window !== "undefined" ? window.localStorage.getItem(KEY) : null;
-      if (raw) setItems(JSON.parse(raw));
-    } catch {}
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (Array.isArray(saved)) setItems(saved);
+      }
+    } catch {
+      window.localStorage.removeItem(KEY);
+    } finally {
+      restored.current = true;
+    }
   }, []);
 
   useEffect(() => {
+    if (!restored.current) return;
     try {
       if (typeof window !== "undefined") window.localStorage.setItem(KEY, JSON.stringify(items));
     } catch {}
