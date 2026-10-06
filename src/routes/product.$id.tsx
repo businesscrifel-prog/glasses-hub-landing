@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getProduct, fmt } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/product/$id")({
   head: ({ params }) => {
@@ -72,12 +73,23 @@ function ProductPage() {
               <span className="w-10 text-center font-semibold">{qty}</span>
               <button onClick={() => setQty(qty + 1)} className="px-3 py-2 text-lg">+</button>
             </div>
-            <button
-              onClick={() => { add(product.id, qty); toast.success("Added to cart"); }}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-white"
+            <Button
+              variant="outline"
+              onClick={() => {
+                add(product.id, qty);
+                toast.success("Added to cart", {
+                  description: `${product.title} · Qty ${qty}`,
+                  duration: 6500,
+                  action: {
+                    label: "Go to cart",
+                    onClick: () => { void navigate({ to: "/cart" }); },
+                  },
+                });
+              }}
+              className="h-auto flex-1 rounded-full border-ink px-6 py-3 text-sm font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-brand-light"
             >
               <ShoppingBag className="h-4 w-4" /> Add to Cart
-            </button>
+            </Button>
           </div>
           <button
             onClick={() => { add(product.id, qty); navigate({ to: "/checkout" }); }}

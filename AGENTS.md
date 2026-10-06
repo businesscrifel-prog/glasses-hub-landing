@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Product media that must work on third-party hosts is bundled through Vite imports, because host-relative asset-service URLs are not portable.
+- Storefront scroll enhancements live in a shared client-effect module with dynamically loaded Lenis and IntersectionObserver reveals; preserve native touch scrolling and reduced-motion fallback for accessibility and portable hosting.

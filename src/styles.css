@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "lenis/dist/lenis.css";
 
 @theme {
   --color-brand-red: oklch(0.72 0.14 82);
@@ -152,5 +153,41 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+[data-scroll-reveal] {
+  transition: opacity 800ms ease, transform 800ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease;
+}
+
+.scroll-reveal-pending {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.grid > [data-scroll-reveal]:nth-child(4n + 2) { transition-delay: 70ms; }
+.grid > [data-scroll-reveal]:nth-child(4n + 3) { transition-delay: 140ms; }
+.grid > [data-scroll-reveal]:nth-child(4n + 4) { transition-delay: 210ms; }
+
+.hero-copy {
+  animation: storefront-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes storefront-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toaster .toast [data-button] {
+  background: var(--color-gold);
+  color: var(--color-brand-on-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal], .hero-copy {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
   }
 }

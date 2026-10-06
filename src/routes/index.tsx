@@ -50,6 +50,7 @@ function ProductCard({ p }: { p: Product }) {
     <Link
       to="/product/$id"
       params={{ id: p.id }}
+      data-scroll-reveal
       className="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white transition-shadow hover:shadow-lg"
     >
       <div className="relative aspect-square bg-white p-6">
@@ -82,7 +83,7 @@ function ProductCard({ p }: { p: Product }) {
 function ProductGrid({ title, kicker, products }: { title: string; kicker?: string; products: Product[] }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-      <div className="mb-8 flex flex-col items-start gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div data-scroll-reveal className="mb-8 flex flex-col items-start gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           {kicker && <p className="mb-1 text-sm font-semibold text-brand-red">{kicker}</p>}
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
@@ -162,7 +163,7 @@ function Index() {
         />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-ink/0 via-ink/40 to-ink/70 sm:block" />
         <div className="relative mx-auto flex max-w-7xl items-center justify-center bg-ink px-4 py-10 sm:absolute sm:inset-0 sm:justify-end sm:bg-transparent sm:px-6 lg:px-8">
-          <div className="max-w-xl text-center sm:text-right">
+          <div className="hero-copy max-w-xl text-center sm:text-right">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-brand-red">
               New Collection · 2026
             </p>
@@ -199,7 +200,7 @@ function Index() {
       <ProductGrid title="New Arrivals" products={newArrivals} />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
+        <div data-scroll-reveal className="mb-10 text-center">
           <p className="mb-2 text-sm font-semibold text-brand-red">Curated Categories</p>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
             Shop by Collection
@@ -207,7 +208,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {collections.map((c) => (
-            <a key={c.label} href="#" className="group block">
+            <a key={c.label} href="#" data-scroll-reveal className="group block">
               <div className="relative overflow-hidden rounded-lg bg-neutral-100">
                 <img
                   src={c.img}
@@ -233,7 +234,7 @@ function Index() {
 
       <section className="bg-neutral-50">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-          <div>
+          <div data-scroll-reveal>
             <p className="mb-2 text-sm font-semibold text-brand-red">Our Promise</p>
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
               Why Choose SHD Optical
@@ -251,7 +252,7 @@ function Index() {
               ))}
             </ul>
           </div>
-          <div className="overflow-hidden rounded-lg">
+          <div data-scroll-reveal className="overflow-hidden rounded-lg">
             <img src={ed1} alt="Model wearing clear metal-frame glasses" width={1000} height={1100} loading="lazy" className="aspect-[4/5] w-full object-cover" />
           </div>
         </div>
@@ -259,10 +260,10 @@ function Index() {
 
       <section>
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-          <div className="order-2 overflow-hidden rounded-lg lg:order-1">
+          <div data-scroll-reveal className="order-2 overflow-hidden rounded-lg lg:order-1">
             <img src={ed2} alt="Portrait of a man wearing dark acetate eyeglasses" width={1000} height={1100} loading="lazy" className="aspect-[4/5] w-full object-cover" />
           </div>
-          <div className="order-1 lg:order-2">
+          <div data-scroll-reveal className="order-1 lg:order-2">
             <p className="mb-2 text-sm font-semibold text-brand-red">Fit & Finish</p>
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
               Pick A Frame That Actually Feels Like You
